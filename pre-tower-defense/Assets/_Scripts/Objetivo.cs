@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[DefaultExecutionOrder(-4)]
 public class Objetivo : MonoBehaviour
 {
 
     public int vida = 100;
+
+    public delegate void ObjetivoDestruido();
+    public event ObjetivoDestruido EnObjetivoDestruido;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,11 +21,14 @@ public class Objetivo : MonoBehaviour
     {
         if (vida <= 0) 
         {
-            //implementar enable de pantalla de gameover aqui
-            Destroy(gameObject);
+            if (EnObjetivoDestruido != null)
+            {
+                EnObjetivoDestruido();
+            }
+            Destroy(gameObject,0.5f);
         }
     }
-
+    //TODO: implementar interfaz IDanable
     public void RecibirDano(int dano =20) 
     {
         vida -= dano;

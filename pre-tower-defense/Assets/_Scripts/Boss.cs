@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,10 +10,30 @@ public class Boss : MonoBehaviour
     public GameObject targetGO;
     public int vida = 100;
 
-    public Animator bossAnim; 
+    public Animator bossAnim;
     // Start is called before the first frame update
+
+    private void OnEnable()
+    {
+        targetGO = GameObject.Find("Objetivo");
+        targetGO.GetComponent<Objetivo>().EnObjetivoDestruido += Detener;
+            
+    }
+
+    private void OnDisable()
+    {
+        targetGO.GetComponent<Objetivo>().EnObjetivoDestruido -= Detener;
+    }
+
+    private void Detener()
+    {
+        bossAnim.SetTrigger("OnObjectiveDestroyed");
+        GetComponent<NavMeshAgent>().SetDestination(transform.position);
+    }
+
     void Start()
     {
+        
         GetComponent<NavMeshAgent>().SetDestination(targetGO.transform.position);
         bossAnim = GetComponent<Animator>();
         bossAnim.SetBool("IsWalking", true);
