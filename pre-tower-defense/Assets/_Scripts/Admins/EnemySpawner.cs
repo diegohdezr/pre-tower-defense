@@ -11,15 +11,30 @@ public class EnemySpawner : MonoBehaviour
 
     private int enemigosDuranteEstaOla;
 
+    public bool IsWaveStarted;
+    public List<GameObject> Enemigos;
+
+    public delegate void OlaEmpezada();
+    public event OlaEmpezada enOlaEmpezada;
+
     public delegate void OlaTerminada();
     public event OlaTerminada EnOlaTerminada;
+
+    public delegate void OlaGanada();
+    public event OlaGanada EnOlaGanada;
 
     // Start is called before the first frame update
     void Start()
     {
         ola = 0;
-        ConfigurarCantidadEnemigos();
-        InstanciarEnemigo();
+    }
+
+    private void FixedUpdate()
+    {
+        if (IsWaveStarted && Enemigos.Count == 0) 
+        {
+            GanarOla();
+        }
     }
 
     public void TerminarOla() 
@@ -29,14 +44,37 @@ public class EnemySpawner : MonoBehaviour
             EnOlaTerminada();
         }
     }
+
+    public void EmpezarOleada()
+    {
+        IsWaveStarted = true;
+        if (enOlaEmpezada != null) 
+        {
+            enOlaEmpezada();
+        }
+        ConfigurarCantidadEnemigos();
+        InstanciarEnemigo();
+    }
+
     public void ConfigurarCantidadEnemigos()
     {
         enemigosDuranteEstaOla = enemigosPorOla[ola];
     }
+
+    public void GanarOla() 
+    {
+        if (IsWaveStarted && EnOlaGanada!=null) 
+        {
+            EnOlaGanada();
+            IsWaveStarted = false;
+        }
+        return;
+    }
     public void InstanciarEnemigo() 
     {
         int indiceAleatorio = Random.Range(0, EnemyPrefabs.Count);
-        Instantiate<GameObject>(EnemyPrefabs[indiceAleatorio], transform.position, Quaternion.identity);
+        var tmpEnemigo = Instantiate<GameObject>(EnemyPrefabs[indiceAleatorio], transform.position, Quaternion.identity);
+        Enemigos.Add(tmpEnemigo);
         enemigosDuranteEstaOla--;
         if (enemigosDuranteEstaOla < 0) 
         {

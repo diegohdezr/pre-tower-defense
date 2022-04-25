@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 3016090c21f418240b70c2881cf0b210
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - enemigo: {instanceID: 0}
+  - prefabBala: {fileID: 5578952731403004062, guid: 36daeddebfbae194db5475f2737ee4b0, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

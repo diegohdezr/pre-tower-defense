@@ -3445,7 +3445,7 @@ GameObject:
   - component: {fileID: 3175229451785483145}
   m_Layer: 0
   m_Name: jill
-  m_TagString: Untagged
+  m_TagString: Enemigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3549,7 +3549,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetGO: {fileID: 0}
+  ReferenciaAdminJuego: {fileID: 0}
   vida: 100
+  _dano: 5
   bossAnim: {fileID: 0}
 --- !u!1 &6965488266281129365
 GameObject:

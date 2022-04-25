@@ -2163,7 +2163,7 @@ GameObject:
   - component: {fileID: 8739912106208557947}
   m_Layer: 0
   m_Name: copzombie_l_actisdato
-  m_TagString: Untagged
+  m_TagString: Enemigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2270,7 +2270,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetGO: {fileID: 0}
-  vida: 100
+  ReferenciaAdminJuego: {fileID: 0}
+  vida: 200
+  _dano: 10
   bossAnim: {fileID: 0}
 --- !u!1 &8499310524516978566
 GameObject:

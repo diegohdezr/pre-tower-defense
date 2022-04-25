@@ -939,7 +939,7 @@ GameObject:
   - component: {fileID: 2527172235545430278}
   m_Layer: 0
   m_Name: pumpkinhulk_l_shaw
-  m_TagString: Untagged
+  m_TagString: Enemigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1043,7 +1043,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetGO: {fileID: 0}
-  vida: 100
+  ReferenciaAdminJuego: {fileID: 0}
+  vida: 500
+  _dano: 40
   bossAnim: {fileID: 0}
 --- !u!1 &3501722414645765916
 GameObject:
